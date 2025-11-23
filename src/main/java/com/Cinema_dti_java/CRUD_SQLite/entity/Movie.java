@@ -13,9 +13,13 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMovie;
+
     private String nameMovie;
+
     private String director;
+
     private LocalDate launchYear;
+
     private int duration;
 
     // Construtor vazio necessário para o JPA

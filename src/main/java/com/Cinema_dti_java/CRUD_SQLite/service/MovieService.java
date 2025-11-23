@@ -11,13 +11,24 @@ import java.util.List;
 @Service
 public class MovieService {
 
+    boolean continuar = true;
+
     @Autowired
     private MovieRepository movieRepository;
 
     public Movie criarFilme(Movie movie) {
+
+
+     while (continuar) {
+         if (movie.getNameMovie() == null) {
+             System.out.println("O nome não pode ser nulo");
+         }
+         continuar = false;
+     }
         if (movieRepository.existsByNameMovie(movie.getNameMovie())) {
-            throw new RuntimeException("já existe um filme com esse nome!!");
+            throw new RuntimeException("Já existe um filme com esse nome!");
         }
+
         return movieRepository.save(movie);
     }
 

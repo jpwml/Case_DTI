@@ -86,30 +86,71 @@ public class CrudCinemaApplication {
 		System.out.println("||          CADASTRAR FILME       ||");
 		System.out.println("||================================||");
 
-		System.out.print("Nome do Filme: ");
-		String nome = scanner.nextLine();
-		scanner.nextLine();
+		String nome;
+		while (true) {
+			System.out.print("Nome do Filme: ");
+			nome = scanner.nextLine().trim();
 
-		System.out.print("Nome do Diretor: ");
-		String nomeDiretor = scanner.nextLine();
+			if (nome.isEmpty()) {
+				System.out.println("✘ O nome do filme não pode ser vazio! Tente novamente.");
+				continue;
+			}
+			break;
+		}
 
-		System.out.print("Data de Lançamento (AAAA-MM-DD): ");
-		String dataString = scanner.nextLine();
-		LocalDate anoDoFilme = LocalDate.parse(dataString);
+		String nomeDiretor;
+		while (true) {
+			System.out.print("Nome do Diretor: ");
+			nomeDiretor = scanner.nextLine().trim();
 
-		System.out.print("Duração (em minutos): ");
-		int duracao = scanner.nextInt();
-		scanner.nextLine();
+			if (nomeDiretor.isEmpty()) {
+				System.out.println("✘ O nome do diretor não pode ser vazio! Tente novamente.");
+				continue;
+			}
+			break;
+		}
+
+		LocalDate anoDoFilme;
+		while (true) {
+			System.out.print("Data de Lançamento (AAAA-MM-DD): ");
+			String dataString = scanner.nextLine().trim();
+
+			try {
+				anoDoFilme = LocalDate.parse(dataString);
+				break;
+			} catch (Exception e) {
+				System.out.println("✘ Data inválida! Use o formato AAAA-MM-DD.");
+			}
+		}
+
+		int duracao;
+		while (true) {
+			System.out.print("Duração (em minutos): ");
+
+			try {
+				duracao = Integer.parseInt(scanner.nextLine().trim());
+
+				if (duracao <= 0) {
+					System.out.println("✘ A duração deve ser maior que 0!");
+					continue;
+				}
+
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println("✘ Digite apenas números!");
+			}
+		}
 
 		Movie movie = new Movie(nome, nomeDiretor, anoDoFilme, duracao);
 
 		try {
-			var result = service.criarFilme(movie);
-			System.out.println(" Filme '" + result.getNameMovie() + "' cadastrado com sucesso!");
+			Movie result = service.criarFilme(movie);
+			System.out.println("✔ Filme '" + result.getNameMovie() + "' cadastrado com sucesso!");
 		} catch (RuntimeException e) {
-			System.out.println(" Erro: " + e.getMessage());
+			System.out.println("✘ Erro: " + e.getMessage());
 		}
 	}
+
 
 	private static void listarFilmes(MovieService service) {
 

@@ -111,3 +111,13 @@ Esse arquivo cobre os seguintes cenários:
 * ❌ Tentativas de atualização e exclusão com ID inválido
 * 🗑️ Exclusão com verificação de existência
 * ✏️ Entre Outros
+
+### Script SQL
+
+CREATE TABLE IF NOT EXISTS movie (
+id_movie     INTEGER PRIMARY KEY AUTOINCREMENT,
+name_movie   TEXT NOT NULL,
+director     TEXT NOT NULL,
+launch_date  TEXT NOT NULL,
+duration     INTEGER NOT NULL
+);

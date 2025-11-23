@@ -29,15 +29,16 @@ public class MovieService {
     public Movie BuscarPorId(Long idMovie) {return movieRepository.findByIdMovie(idMovie);}
 
     public List<Movie> BuscarPorNome(String nome) {
-        return movieRepository.findByNameMovie(nome);
+        return movieRepository.findByNameMovieContainingIgnoreCase(nome);
+
     }
 
     public List<Movie> BuscarPorDiretor(String director) {
-        return movieRepository.findByDirector(director);
+        return movieRepository.findByDirectorContainingIgnoreCase(director);
     }
 
     public List<Movie> BuscarPorAnoLancamento(LocalDate launchYear) {
-        return movieRepository.findByLaunchYear(launchYear);
+        return movieRepository.findByLaunchYearContainingIgnoreCase(launchYear);
     }
 
     public Movie atualizarFilme(Long idMovie, Movie movieAtualizado) {

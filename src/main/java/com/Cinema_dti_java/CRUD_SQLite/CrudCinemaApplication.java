@@ -149,10 +149,12 @@ public class CrudCinemaApplication {
 		} else {
 			System.out.println(" Filmes encontrados:");
 			filmes.forEach(filme -> {
-				System.out.println("    ID: " + filme.getIdMovie() + " | " + filme.getNameMovie());
+				System.out.println("    ID: " + filme.getIdMovie());
+				System.out.println("    Filme: " + filme.getNameMovie());
 				System.out.println("    Diretor: " + filme.getDirector());
 				System.out.println("    Lançamento: " + filme.getLaunchYear());
 				System.out.println("    Duração: " + filme.getDuration() + " min");
+				System.out.println();
 			});
 		}
 	}
@@ -172,9 +174,12 @@ public class CrudCinemaApplication {
 		} else {
 			System.out.println(" Filmes do diretor " + diretor + ":");
 			filmes.forEach(filme -> {
-				System.out.println("  ID: " + filme.getIdMovie() + " | " + filme.getNameMovie());
-				System.out.println("     Lançamento: " + filme.getLaunchYear());
-				System.out.println("     Duração: " + filme.getDuration() + " min");
+				System.out.println("    ID: " + filme.getIdMovie());
+				System.out.println("    Filme: " + filme.getNameMovie());
+				System.out.println("    Diretor: " + filme.getDirector());
+				System.out.println("    Lançamento: " + filme.getLaunchYear());
+				System.out.println("    Duração: " + filme.getDuration() + " min");
+				System.out.println();
 			});
 		}
 	}
@@ -193,10 +198,12 @@ public class CrudCinemaApplication {
 			Movie filme = service.BuscarPorId(id);
 			if (filme != null) {
 				System.out.println(" Filme encontrado:");
-				System.out.println( filme.getNameMovie());
+				System.out.println("    ID: " + filme.getIdMovie());
+				System.out.println("    Filme: " + filme.getNameMovie());
 				System.out.println("    Diretor: " + filme.getDirector());
 				System.out.println("    Lançamento: " + filme.getLaunchYear());
 				System.out.println("    Duração: " + filme.getDuration() + " min");
+				System.out.println();
 			} else {
 				System.out.println(" Filme com ID " + id + " não encontrado.");
 			}

@@ -11,9 +11,9 @@ import java.time.LocalDate;
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     boolean existsByNameMovie(String nameMovie);
-    List<Movie> findByNameMovie(String nameMovie);
-    List<Movie> findByDirector(String director);
-    List<Movie> findByLaunchYear(LocalDate launchYear);
+    List<Movie> findByNameMovieContainingIgnoreCase(String nameMovie);
+    List<Movie> findByDirectorContainingIgnoreCase(String director);
+    List<Movie> findByLaunchYearContainingIgnoreCase(LocalDate launchYear);
     Movie findByIdMovie(Long idMovie);
 
 }
